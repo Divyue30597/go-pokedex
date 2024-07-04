@@ -14,12 +14,12 @@ func getCommands() map[string]cliCommand {
 		},
 		"map": {
 			name:        "map",
-			description: "Displays the names of 20 location areas in pokemon world",
+			description: "Get next page of Pokemon locations (limit is 20)",
 			callback:    commandGetMap,
 		},
 		"mapb": {
 			name:        "mapb",
-			description: "Displays the names of previous 20 location areas in pokemon world",
+			description: "Get previous page of Pokemon locations (limit is 20)",
 			callback:    commandGetPreviousMap,
 		},
 	}

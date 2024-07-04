@@ -5,15 +5,23 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/Divyue30597/pokedex/pokeapi"
 )
+
+type config struct {
+	pokeapi          pokeapi.Client
+	nextLocaleString *string
+	prevLocalString  *string
+}
 
 type cliCommand struct {
 	name        string
 	description string
-	callback    func() error
+	callback    func(*config) error
 }
 
-func startRepl() {
+func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -28,7 +36,7 @@ func startRepl() {
 		command, ok := getCommands()[input[0]]
 
 		if ok {
-			if err := command.callback(); err != nil {
+			if err := command.callback(cfg); err != nil {
 				fmt.Println(err)
 			}
 			continue
