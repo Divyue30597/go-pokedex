@@ -6,7 +6,7 @@ import (
 )
 
 func commandGetMap(cfg *config, location string) error {
-	response, err := cfg.pokeapi.GetMapLists(baseUrl, cfg.nextLocaleString)
+	response, err := cfg.pokeapi.GetMapLists(cfg.nextLocaleString)
 	if err != nil {
 		return err
 	}
@@ -26,7 +26,7 @@ func commandGetPreviousMap(cfg *config, location string) error {
 		return errors.New("no previous page found or it is the first page")
 	}
 
-	response, err := cfg.pokeapi.GetMapLists(baseUrl, cfg.prevLocalString)
+	response, err := cfg.pokeapi.GetMapLists(cfg.prevLocalString)
 	if err != nil {
 		return err
 	}

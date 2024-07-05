@@ -4,24 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
-
-	"github.com/Divyue30597/pokedex/internal/pokeapi"
-	"github.com/Divyue30597/pokedex/internal/pokeexplore"
 )
-
-type config struct {
-	pokeapi          pokeapi.Client
-	pokemonList      pokeexplore.ExploringLocation
-	nextLocaleString *string
-	prevLocalString  *string
-}
-
-type cliCommand struct {
-	name        string
-	description string
-	callback    func(*config, string) error
-}
 
 func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
@@ -52,10 +35,4 @@ func startRepl(cfg *config) {
 			continue
 		}
 	}
-}
-
-func cleanText(text string) []string {
-	newText := strings.ToLower(text)
-	finalText := strings.Fields(newText)
-	return finalText
 }

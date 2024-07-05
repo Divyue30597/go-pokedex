@@ -6,7 +6,7 @@ func commandExplore(cfg *config, location string) error {
 	fmt.Printf("Exploring %s\n", location)
 	fmt.Println("Found Pokemon:")
 
-	response, err := cfg.pokemonList.Explore(baseUrl, location)
+	response, err := cfg.pokeapi.Explore(location)
 	if err != nil {
 		return err
 	}
