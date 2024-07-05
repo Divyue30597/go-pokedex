@@ -8,9 +8,18 @@ import (
 
 func (c *Client) GetMapLists(pageUrl *string) (ResponseFromPokedex, error) {
 	pokedexUrl := url + "location-area"
-
 	if pageUrl != nil {
 		pokedexUrl = *pageUrl
+	}
+
+	if val, ok := c.cache.Get(pokedexUrl); ok {
+		locationResp := ResponseFromPokedex{}
+
+		if err := json.Unmarshal(val, &locationResp); err != nil {
+			return ResponseFromPokedex{}, err
+		}
+
+		return locationResp, nil
 	}
 
 	res, err := c.httpClient.Get(pokedexUrl)
@@ -34,5 +43,6 @@ func (c *Client) GetMapLists(pageUrl *string) (ResponseFromPokedex, error) {
 		return ResponseFromPokedex{}, err
 	}
 
+	c.cache.Add(pokedexUrl, body)
 	return response, nil
 }
