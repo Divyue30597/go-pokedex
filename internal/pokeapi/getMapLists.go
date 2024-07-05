@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func (c *Client) GetMapLists(pageUrl *string) (ResponseFromPokedex, error) {
+func (c *Client) GetMapLists(url string, pageUrl *string) (ResponseFromPokedex, error) {
 	pokedexUrl := url + "location-area"
 	if pageUrl != nil {
 		pokedexUrl = *pageUrl

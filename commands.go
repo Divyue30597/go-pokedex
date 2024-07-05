@@ -22,5 +22,10 @@ func getCommands() map[string]cliCommand {
 			description: "Get previous page of Pokemon locations (limit is 20)",
 			callback:    commandGetPreviousMap,
 		},
+		"explore": {
+			name:        "explore",
+			description: "Let's you explore the location from the selected lists.",
+			callback:    commandExplore,
+		},
 	}
 }

@@ -7,10 +7,12 @@ import (
 	"strings"
 
 	"github.com/Divyue30597/pokedex/internal/pokeapi"
+	"github.com/Divyue30597/pokedex/internal/pokeexplore"
 )
 
 type config struct {
 	pokeapi          pokeapi.Client
+	pokemonList      pokeexplore.ExploringLocation
 	nextLocaleString *string
 	prevLocalString  *string
 }
@@ -18,7 +20,7 @@ type config struct {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, string) error
 }
 
 func startRepl(cfg *config) {
@@ -32,11 +34,16 @@ func startRepl(cfg *config) {
 		}
 
 		input := cleanText(scanner.Text())
-
 		command, ok := getCommands()[input[0]]
 
+		var locationVal string = ""
+
+		if len(input) >= 2 {
+			locationVal = input[1]
+		}
+
 		if ok {
-			if err := command.callback(cfg); err != nil {
+			if err := command.callback(cfg, locationVal); err != nil {
 				fmt.Println(err)
 			}
 			continue
@@ -45,7 +52,6 @@ func startRepl(cfg *config) {
 			continue
 		}
 	}
-
 }
 
 func cleanText(text string) []string {

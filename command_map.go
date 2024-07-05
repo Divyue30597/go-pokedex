@@ -5,8 +5,8 @@ import (
 	"fmt"
 )
 
-func commandGetMap(cfg *config) error {
-	response, err := cfg.pokeapi.GetMapLists(cfg.nextLocaleString)
+func commandGetMap(cfg *config, location string) error {
+	response, err := cfg.pokeapi.GetMapLists(baseUrl, cfg.nextLocaleString)
 	if err != nil {
 		return err
 	}
@@ -21,12 +21,12 @@ func commandGetMap(cfg *config) error {
 	return nil
 }
 
-func commandGetPreviousMap(cfg *config) error {
+func commandGetPreviousMap(cfg *config, location string) error {
 	if cfg.prevLocalString == nil {
 		return errors.New("no previous page found or it is the first page")
 	}
 
-	response, err := cfg.pokeapi.GetMapLists(cfg.prevLocalString)
+	response, err := cfg.pokeapi.GetMapLists(baseUrl, cfg.prevLocalString)
 	if err != nil {
 		return err
 	}
