@@ -19,14 +19,14 @@ func startRepl(cfg *config) {
 		input := cleanText(scanner.Text())
 		command, ok := getCommands()[input[0]]
 
-		var locationVal string = ""
+		args := []string{}
 
-		if len(input) >= 2 {
-			locationVal = input[1]
+		if len(input) > 1 {
+			args = input[1:]
 		}
 
 		if ok {
-			if err := command.callback(cfg, locationVal); err != nil {
+			if err := command.callback(cfg, args...); err != nil {
 				fmt.Println(err)
 			}
 			continue

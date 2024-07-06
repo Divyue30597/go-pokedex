@@ -2,15 +2,13 @@ package pokeapi
 
 // Pokedex /location-area -> api response structure
 type ResponseFromPokedex struct {
-	Count    int       `json:"count"`
-	Next     *string   `json:"next"`
-	Previous *string   `json:"previous"`
-	Results  []Results `json:"results"`
-}
-
-type Results struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Count    int     `json:"count"`
+	Next     *string `json:"next"`
+	Previous *string `json:"previous"`
+	Results  []struct {
+		Name string `json:"name"`
+		URL  string `json:"url"`
+	} `json:"results"`
 }
 
 // Pokedex /location-area/{location} -> api response structure
@@ -131,38 +129,38 @@ type Pokemon struct {
 		URL  string `json:"url"`
 	} `json:"species"`
 	Sprites struct {
-		BackDefault      string `json:"back_default"`
-		BackFemale       any    `json:"back_female"`
-		BackShiny        string `json:"back_shiny"`
-		BackShinyFemale  any    `json:"back_shiny_female"`
-		FrontDefault     string `json:"front_default"`
-		FrontFemale      any    `json:"front_female"`
-		FrontShiny       string `json:"front_shiny"`
-		FrontShinyFemale any    `json:"front_shiny_female"`
+		BackDefault      string  `json:"back_default"`
+		BackFemale       *string `json:"back_female"`
+		BackShiny        string  `json:"back_shiny"`
+		BackShinyFemale  *string `json:"back_shiny_female"`
+		FrontDefault     string  `json:"front_default"`
+		FrontFemale      *string `json:"front_female"`
+		FrontShiny       string  `json:"front_shiny"`
+		FrontShinyFemale *string `json:"front_shiny_female"`
 		Other            struct {
 			DreamWorld struct {
-				FrontDefault string `json:"front_default"`
-				FrontFemale  any    `json:"front_female"`
+				FrontDefault string  `json:"front_default"`
+				FrontFemale  *string `json:"front_female"`
 			} `json:"dream_world"`
 			Home struct {
-				FrontDefault     string `json:"front_default"`
-				FrontFemale      any    `json:"front_female"`
-				FrontShiny       string `json:"front_shiny"`
-				FrontShinyFemale any    `json:"front_shiny_female"`
+				FrontDefault     string  `json:"front_default"`
+				FrontFemale      *string `json:"front_female"`
+				FrontShiny       string  `json:"front_shiny"`
+				FrontShinyFemale *string `json:"front_shiny_female"`
 			} `json:"home"`
 			OfficialArtwork struct {
 				FrontDefault string `json:"front_default"`
 				FrontShiny   string `json:"front_shiny"`
 			} `json:"official-artwork"`
 			Showdown struct {
-				BackDefault      string `json:"back_default"`
-				BackFemale       any    `json:"back_female"`
-				BackShiny        string `json:"back_shiny"`
-				BackShinyFemale  any    `json:"back_shiny_female"`
-				FrontDefault     string `json:"front_default"`
-				FrontFemale      any    `json:"front_female"`
-				FrontShiny       string `json:"front_shiny"`
-				FrontShinyFemale any    `json:"front_shiny_female"`
+				BackDefault      string  `json:"back_default"`
+				BackFemale       *string `json:"back_female"`
+				BackShiny        string  `json:"back_shiny"`
+				BackShinyFemale  *string `json:"back_shiny_female"`
+				FrontDefault     string  `json:"front_default"`
+				FrontFemale      *string `json:"front_female"`
+				FrontShiny       string  `json:"front_shiny"`
+				FrontShinyFemale *string `json:"front_shiny_female"`
 			} `json:"showdown"`
 		} `json:"other"`
 		Versions struct {
@@ -220,88 +218,88 @@ type Pokemon struct {
 			} `json:"generation-iii"`
 			GenerationIv struct {
 				DiamondPearl struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string  `json:"back_default"`
+					BackFemale       *string `json:"back_female"`
+					BackShiny        string  `json:"back_shiny"`
+					BackShinyFemale  *string `json:"back_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"diamond-pearl"`
 				HeartgoldSoulsilver struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string  `json:"back_default"`
+					BackFemale       *string `json:"back_female"`
+					BackShiny        string  `json:"back_shiny"`
+					BackShinyFemale  *string `json:"back_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"heartgold-soulsilver"`
 				Platinum struct {
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string  `json:"back_default"`
+					BackFemale       *string `json:"back_female"`
+					BackShiny        string  `json:"back_shiny"`
+					BackShinyFemale  *string `json:"back_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"platinum"`
 			} `json:"generation-iv"`
 			GenerationV struct {
 				BlackWhite struct {
 					Animated struct {
-						BackDefault      string `json:"back_default"`
-						BackFemale       any    `json:"back_female"`
-						BackShiny        string `json:"back_shiny"`
-						BackShinyFemale  any    `json:"back_shiny_female"`
-						FrontDefault     string `json:"front_default"`
-						FrontFemale      any    `json:"front_female"`
-						FrontShiny       string `json:"front_shiny"`
-						FrontShinyFemale any    `json:"front_shiny_female"`
+						BackDefault      string  `json:"back_default"`
+						BackFemale       *string `json:"back_female"`
+						BackShiny        string  `json:"back_shiny"`
+						BackShinyFemale  *string `json:"back_shiny_female"`
+						FrontDefault     string  `json:"front_default"`
+						FrontFemale      *string `json:"front_female"`
+						FrontShiny       string  `json:"front_shiny"`
+						FrontShinyFemale *string `json:"front_shiny_female"`
 					} `json:"animated"`
-					BackDefault      string `json:"back_default"`
-					BackFemale       any    `json:"back_female"`
-					BackShiny        string `json:"back_shiny"`
-					BackShinyFemale  any    `json:"back_shiny_female"`
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					BackDefault      string  `json:"back_default"`
+					BackFemale       *string `json:"back_female"`
+					BackShiny        string  `json:"back_shiny"`
+					BackShinyFemale  *string `json:"back_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"black-white"`
 			} `json:"generation-v"`
 			GenerationVi struct {
 				OmegarubyAlphasapphire struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"omegaruby-alphasapphire"`
 				XY struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"x-y"`
 			} `json:"generation-vi"`
 			GenerationVii struct {
 				Icons struct {
-					FrontDefault string `json:"front_default"`
-					FrontFemale  any    `json:"front_female"`
+					FrontDefault string  `json:"front_default"`
+					FrontFemale  *string `json:"front_female"`
 				} `json:"icons"`
 				UltraSunUltraMoon struct {
-					FrontDefault     string `json:"front_default"`
-					FrontFemale      any    `json:"front_female"`
-					FrontShiny       string `json:"front_shiny"`
-					FrontShinyFemale any    `json:"front_shiny_female"`
+					FrontDefault     string  `json:"front_default"`
+					FrontFemale      *string `json:"front_female"`
+					FrontShiny       string  `json:"front_shiny"`
+					FrontShinyFemale *string `json:"front_shiny_female"`
 				} `json:"ultra-sun-ultra-moon"`
 			} `json:"generation-vii"`
 			GenerationViii struct {
 				Icons struct {
-					FrontDefault string `json:"front_default"`
-					FrontFemale  any    `json:"front_female"`
+					FrontDefault string  `json:"front_default"`
+					FrontFemale  *string `json:"front_female"`
 				} `json:"icons"`
 			} `json:"generation-viii"`
 		} `json:"versions"`
