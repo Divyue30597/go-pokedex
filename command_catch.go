@@ -24,6 +24,7 @@ func commandCatch(cfg *config, pokemon ...string) error {
 
 	if val > response.BaseExperience {
 		fmt.Printf("%s was caught!\n", pokemon[0])
+		fmt.Println("you may now inspect it with inspect command.")
 		cfg.pokemonCaught.Add(pokemon[0], response)
 	} else {
 		fmt.Printf("%s escaped!\n", pokemon[0])
